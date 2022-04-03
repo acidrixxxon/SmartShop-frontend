@@ -1,0 +1,20 @@
+@import './../../../base';
+
+
+.shopping-cart__btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+
+    .shopping-cart__icon {
+        width: 30px;
+        height: 48px;
+        margin-left: 10px;
+    
+        path {
+            fill: $text-color-gray;
+        }
+    }
+}
+

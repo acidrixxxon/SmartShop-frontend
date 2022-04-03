@@ -1,0 +1,15 @@
+@import './../../../base';
+
+
+.counter {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: $darkBlue-color;
+    border-radius: 64px;
+    color: #fff;
+    padding: 2px 6px;
+    font-size: 10px;
+    right: -10px;
+    top: 3px;
+}

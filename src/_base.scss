@@ -1,0 +1,24 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.App {
+    font-family: 'Exo 2', sans-serif;
+    background-color: #E5E5E5;
+}
+
+$text-color-gray: #838688;
+$darkBlue-color: #2A5275;
+
+input {
+    outline: none;
+    border: none;
+}
+
+li {
+    list-style: none;
+}

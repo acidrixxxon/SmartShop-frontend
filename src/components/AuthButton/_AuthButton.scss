@@ -1,0 +1,11 @@
+@import './../../base';
+
+.auth__signIn--btn {
+    margin-left: 20px;
+    padding: 15px 25px;
+    background-color: $darkBlue-color;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+}

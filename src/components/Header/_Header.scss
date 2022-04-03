@@ -1,0 +1,19 @@
+@import './../../base';
+
+#header {
+    padding: 15px 0;
+    color: $text-color-gray;
+    min-height: 80px;
+    background-color: #fff;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .header__buttons {
+            display: flex;
+            align-items: center;
+        }
+    }
+}

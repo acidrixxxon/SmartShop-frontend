@@ -1,0 +1,55 @@
+@import './../../base';
+
+.search__block {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    border-bottom: 1px solid #C8CACB;
+    padding: 10px 5px;
+    background-color: transparent;
+    color: $text-color-gray;
+
+    .search__block--icon {
+        margin-right: 10px;
+    }
+
+}
+
+.searchModal__layout {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #2A5275;
+    z-index: 100;
+
+    .searchModal__content {
+        width: 100%;
+        background-color: #fff;
+        height: 80px;
+        z-index: 999;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .container {
+
+            .searchModal__input {
+                border: 1px solid #4878A6;
+                width: 100%;
+                padding: 10px 20px;
+                border-radius: 4px;
+            }
+
+            .searchModal__closeicon {
+                margin-left: 10px;
+                cursor: pointer;
+            }
+        }
+    }
+}

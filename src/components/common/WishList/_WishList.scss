@@ -1,0 +1,13 @@
+
+
+@import './../../../base';
+
+.wishList__icon {
+    width: 30px;
+    height: 48px;
+    margin-left: 30px;
+
+    path {
+        fill: $text-color-gray;
+    }
+}
