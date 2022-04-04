@@ -1,0 +1,181 @@
+@import './../../../base';
+
+
+.category-item {
+    padding: 10px;
+    flex: 0 0 25%;
+    flex-basis: 25%;
+    border-radius: 8px;
+    border: 1px solid #EAEAF0;
+    background-color: #fff;
+    position: relative;
+    z-index: 9999;
+    transition: .1s all ease-in;
+
+    &:hover {
+        transform: scale(1.02);
+    }
+
+    .category-item__image {
+        margin-bottom: 10px;
+        position: relative;
+
+        .category-item__image--img {
+            width: 100%;
+            height: auto;
+        }
+
+        .category-item__label {
+            position: absolute;
+            right: 0;
+            border-radius: 4px;
+            padding: 5px 16px;
+            color: #fff;
+
+            &.label-new {
+                background-color: #48A69B;
+                top: 10px;
+            }
+            
+            &.label-hit {
+                background: #D73838;
+                top: 50px;
+            }
+        }
+    }
+
+    .category-item__itemCategory {
+        color: $text-color-gray;
+        font-size: 16px;
+        line-height: 20.8px;
+        margin-bottom: 5px;
+    }
+
+    .category-item__title {
+        color: $text-color-main;
+        font-size: 20px;
+        line-height: 26px;
+        font-weight: 400;
+        min-height: 50px;
+        @extend %partial-text;
+        margin-bottom: 15px;
+    }
+
+    .category-item__row {
+        display: flex;
+        margin-bottom: 15px;
+
+        .category-item__rating {
+            margin-right: 15px;
+        }
+
+        .category-item__comments {
+            display: flex;
+            align-items: center;
+            margin-top: -3px;
+
+            &--icon {
+                height: 14px;
+            }
+        }
+    }
+
+    .category-item__price {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 20px;
+
+        .category-item__priceContainer {
+            display: flex;
+            flex-direction: column;
+
+            .category-item__price__discountPrice {
+                color: $text-color-gray;
+                font-size: 16px;
+                line-height: 20.8px;
+                font-weight: 700;
+                position: relative;
+                width: min-content;
+
+                &:before {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    top: 50%;
+                    width: 100%;
+                    background-color: $text-color-gray;
+                    height: 2px;
+                }
+            }
+
+            .category-item__price__oldPrice {
+                font-size: 24px;
+                line-height: 31px;
+                color: $text-color-main;
+                font-weight: 700;
+                margin-bottom: 5px;
+            }
+
+            .category-item__price__discount {
+                background-color: #F37748;
+                border-radius: 14px;
+                color: #fff;
+                padding: 5px 7px;
+
+                span {
+                    &:first-child {
+                        color: $text-color-main;
+                        background-color: #fff;
+                        border-radius: 23px;
+                        padding: 0 5px;
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+
+        .category-item__buttonsList {
+            display: flex;
+
+            .category-item__buttonsList--btn {
+                border: 1px solid #C8CACB;
+                border-radius: 4px;
+                height: 40px;
+                width: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-left: 10px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .category-item__buyButton {
+        border: 1px solid #4878A6;
+        width: 100%;
+        margin: 0 auto;
+        padding: 10px  0;
+        background-color: transparent;
+        border-radius: 4px;
+        display: block;
+        color: #4878A6;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: .2s all linear;
+
+        &:hover {
+            background-color: #2A5275;
+            color: #fff;
+        }
+
+        svg {
+            margin-left: 10px;
+            height: 20px;
+            width: 20px;
+        }
+    }
+}

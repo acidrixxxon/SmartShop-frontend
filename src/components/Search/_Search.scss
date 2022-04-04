@@ -53,3 +53,11 @@
         }
     }
 }
+
+
+
+@media screen and (max-width: 768px) {
+    .search__block {
+        display: none;
+    }
+}

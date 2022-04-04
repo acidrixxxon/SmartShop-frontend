@@ -9,3 +9,12 @@
     color: #fff;
     cursor: pointer;
 }
+
+
+
+@media screen and (max-width: 480px) {
+        
+    .auth__signIn--btn {
+        padding: 10px 15px;
+    }
+}

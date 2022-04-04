@@ -11,3 +11,12 @@
         fill: $text-color-gray;
     }
 }
+
+
+@media screen and (max-width: 768px) {
+    .wishList__icon {
+        height: 32px;
+        width: 23px;
+        margin-top: -4px;
+    }
+}

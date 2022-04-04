@@ -18,3 +18,14 @@
     }
 }
 
+
+@media screen and (max-width: 768px) {
+    .shopping-cart__btn {
+
+        .shopping-cart__icon {
+            height: 32px;
+            width: 23px;
+        }
+    }
+}
+

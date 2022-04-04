@@ -8,9 +8,10 @@
 
 .App {
     font-family: 'Exo 2', sans-serif;
-    background-color: #E5E5E5;
+    // background-color: #E5E5E5;
 }
 
+$text-color-main: #070C11;
 $text-color-gray: #838688;
 $darkBlue-color: #2A5275;
 
@@ -21,4 +22,11 @@ input {
 
 li {
     list-style: none;
+}
+
+%partial-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }

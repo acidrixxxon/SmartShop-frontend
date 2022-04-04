@@ -17,3 +17,20 @@
         }
     }
 }
+
+
+@media screen and (max-width: 480px) {
+        
+    #header {
+
+        .container {
+
+            .header__logotype {
+                svg {
+                    height: 40px;
+                    width: 130px;
+                }
+            }
+        }
+    }
+}

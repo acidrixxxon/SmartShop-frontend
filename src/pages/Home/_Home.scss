@@ -1,0 +1,22 @@
+
+
+
+#home {
+
+    padding: 20px 0;
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+    #home {
+        padding: 10px 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #home {
+        padding: 0;
+    }
+}

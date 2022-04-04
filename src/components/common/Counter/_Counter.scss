@@ -13,3 +13,11 @@
     right: -10px;
     top: 3px;
 }
+
+
+@media screen and (max-width: 768px) {
+    .counter {
+        font-size: 8px;
+        top: 0;
+    }
+}
