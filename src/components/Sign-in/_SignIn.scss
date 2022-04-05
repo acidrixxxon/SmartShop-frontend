@@ -1,6 +1,6 @@
 @import './../../base';
 
-.auth__signIn--btn {
+.signIn--btn {
     margin-left: 20px;
     padding: 15px 25px;
     background-color: $darkBlue-color;
@@ -8,13 +8,18 @@
     border-radius: 4px;
     color: #fff;
     cursor: pointer;
+    transition: .1s all linear;
+
+    &:hover {
+        background-color: $blue-color;
+    }
 }
 
 
 
 @media screen and (max-width: 480px) {
         
-    .auth__signIn--btn {
+    .signIn--btn {
         padding: 10px 15px;
     }
 }

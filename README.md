@@ -1,3 +1,5 @@
 FrontStack:
 React
-Redux
+Redux + Redux toolkit
+React Router
+Formik

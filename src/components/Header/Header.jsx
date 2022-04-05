@@ -1,5 +1,5 @@
 import React from 'react'
-import AuthButton from '../AuthButton/AuthButton'
+import SignIn from '../Sign-in/SignIn'  
 import Cart from '../common/Cart/Cart'
 import Container from '../common/Container/Container'
 import Logotype from '../common/Logotype/Logotype'
@@ -19,7 +19,7 @@ const Header = () => {
                 <Search />
                 <WishList />
                 <Cart />
-                <AuthButton />
+                <SignIn />
             </div>
         </Container>
     </div>
