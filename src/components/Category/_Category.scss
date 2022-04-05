@@ -31,3 +31,58 @@
         display: flex;
     }
 }
+
+
+
+@media screen and (max-width: 900px) {
+    .category {
+        .category-list {
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .category {
+        .category-headline {
+            justify-content: space-between;
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .category {
+        .category-headline {
+            margin-bottom: 20px;
+
+            &__allgoods {
+                bottom: 5px;
+                top: auto;
+            }
+        }
+        .category-list {
+            justify-content: center;
+        }
+    }
+}
+
+
+@media screen and (max-width: 320px) {
+    .category {
+        .category-headline {
+
+            &__title {
+                font-size: 24px;
+                line-height: 31px;
+                margin-right: 0;
+            }
+
+            &__allgoods {
+                font-size: 16px;
+                top: auto;
+                bottom: auto;
+            }
+        }
+    }
+}

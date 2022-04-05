@@ -30,3 +30,17 @@ li {
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+
+
+
+@media screen and (max-width: 768px) {
+    .App {
+        padding-bottom: 64px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .App {
+        padding-bottom: 50px;
+    }
+}
