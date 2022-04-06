@@ -6,7 +6,7 @@ import Counter from '../Counter/Counter'
 const Cart = () => {
   return (
     <>
-        <button  class="shopping-cart__btn">
+        <button  className="shopping-cart__btn">
           <AiOutlineShoppingCart class="shopping-cart__icon" />
           <Counter count={25}/>
         </button>

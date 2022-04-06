@@ -1,24 +1,44 @@
 import React from 'react'
 import './_LoginForm.scss'
 import { AiOutlineLock,AiOutlineEyeInvisible,AiOutlineEye } from 'react-icons/ai'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
 
-const LoginForm = () => {
+const LoginForm = ({ toRegister }) => {
     const [ showPassword,setShowPassword ] = React.useState(false)
 
     const toggleShowPassword = () => setShowPassword(!showPassword)
 
+    const formik = useFormik({
+        initialValues: {
+            email: '',
+            password: ''
+        },
+        validationSchema: Yup.object({
+            email: Yup.string().email('Не корректный email').required('Введите email'),
+            password: Yup.string().min(8,'Пароль должен быть больше 8 символов').required('Введите пароль')
+        }),
+        onSubmit: (values) => {
+            console.log(values)
+        }
+    })
+
     return (
-        <form className='form login-form'>
+        <form className='form login-form' onSubmit={formik.handleSubmit}>
+            {formik.errors.email ? <span className='form-error'>{formik.errors.email}</span> : null}
             <label className='form-field__label' htmlFor='email'>
-                Эл. почта или телефон
+                Эл. почта 
             </label>
             <input 
                 type="text" 
                 className='form-field__input' 
                 id="email" 
                 name="email" 
-                placeholder='Ваш Email...'/>
+                placeholder='Ваш Email...'
+                value={formik.values.email}
+                onChange={formik.handleChange}/>
 
+            {formik.errors.password ? <span className='form-error'>{formik.errors.password}</span> : null}    
             <label className='form-field__label' htmlFor='password'>
                 Пароль
             </label>
@@ -28,7 +48,10 @@ const LoginForm = () => {
                     type={showPassword ? 'text' : 'password'} 
                     className='form-field__input password-input' 
                     id="password" 
-                    name="password" />
+                    name="password" 
+                    placeholder='Введите пароль'
+                    value={formik.values.password}
+                    onChange={formik.handleChange}/>
                 {!showPassword ? 
                     <AiOutlineEyeInvisible className='form-field__password--eyeIcon' onClick={toggleShowPassword}/> : 
                     <AiOutlineEye className='form-field__password--eyeIcon' onClick={toggleShowPassword}/>
@@ -43,6 +66,12 @@ const LoginForm = () => {
                 <input type="checkbox" className='form-field__checkbox--input' checked/>
                 Запомнить меня
             </span>
+
+            <button className="form-button__signin" type='submit'>
+                Войти
+            </button>
+
+            <span className='form-link__register' onClick={toRegister}>Зарегестрироваться</span>
         </form>
     )
 }

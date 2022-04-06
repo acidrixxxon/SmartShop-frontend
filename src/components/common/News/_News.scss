@@ -1,0 +1,45 @@
+@import './../../../base';
+
+.news {
+    margin-bottom: 80px;
+    
+    .news-headline {
+        display: flex;
+        align-items: center;
+        margin-bottom: 40px;
+
+        &__title {
+            font-size: 36px;
+            line-height: 46.8px;
+            font-weight: 700;
+            color: $text-color-main;
+            margin-right: 30px;
+        }
+
+        &__allgoods {
+            position: relative;
+            top: 5px;
+            display: flex;
+            align-items: center;
+
+            svg {
+                position: relative;
+                top: 2px;
+            }
+        }
+    }
+
+    .news-container {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .news {
+        .news-container {
+            flex-wrap: wrap;
+        }
+    }
+}

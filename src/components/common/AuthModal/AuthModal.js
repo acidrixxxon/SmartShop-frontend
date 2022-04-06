@@ -8,6 +8,8 @@ import RegisterForm from '../Forms/RegisterForm/RegisterForm'
 const AuthModal = ({ closeModal }) => {
     const [ status,setStatus ] = React.useState(Auth.LOGIN)
 
+    const toRegister = () => setStatus(Auth.REGISTER)
+    const toLogin = () => setStatus(Auth.LOGIN)
     return (
         <div className='modal__content' onClick={(e) => e.stopPropagation()}>
             <div className='modal__head'>
@@ -19,7 +21,7 @@ const AuthModal = ({ closeModal }) => {
             </div>
 
             <div className='modal__body'>
-                { status === Auth.LOGIN ? (<LoginForm />) : <RegisterForm />}
+                { status === Auth.LOGIN ? (<LoginForm toRegister={toRegister} />) : <RegisterForm toLogin={toLogin} />}
             </div>
         </div>
     )

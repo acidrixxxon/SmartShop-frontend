@@ -15,7 +15,7 @@ const Category = ({ name}) => {
         </div>
         
         <ul className="category-list">
-            {[...new Array(4)].map((item,index) => <CategoryItem />)}
+            {[...new Array(4)].map((item,index) => <CategoryItem key={index} />)}
         </ul>
     </div>
   )

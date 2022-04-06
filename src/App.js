@@ -6,7 +6,7 @@ import './_base.scss';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" id="App">
       <Header />
       <Navigation />
       <MobileNavigation />

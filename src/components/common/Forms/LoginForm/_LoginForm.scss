@@ -75,12 +75,82 @@
         line-height: 16px;
 
         &--input {
-            margin-right: 5px;
+            margin-right: 10px;
             padding: 2px;
             
             &:checked {
                 background-color: $darkBlue-color;
             }
+        }
+    }
+
+    .form-button__signin {
+        background-color: $darkBlue-color;
+        width: 100%;
+        min-height: 48px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 500;
+        border-radius: 4px;
+        border: none;
+        margin-bottom: 20px;
+    }
+
+    .form-link__register {
+        text-align: center;
+        color: $blue-color;
+        font-size: 16px;
+    }
+}
+
+
+
+@media screen and (max-width: 380px) {
+    .form {
+
+        &-field__password {
+
+            .form-field__input {
+                padding-left: 25px;
+            }
+            .form-field__password--lockIcon {
+                height: 15px;
+                width: 15px;
+                left: 5px;
+            }
+
+            .form-field__password--eyeIcon {
+                width: 17px;
+                height: 17px;
+            }
+        }
+
+        &-field__input {
+            padding: 7px 10px;
+            margin-bottom: 10px;
+        }
+
+        &-field__label  {
+            font-size: 14px;
+        }
+
+        &-link__forgotPassword {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        &-field__checkbox {
+            margin-bottom: 15px;font-size: 14px;
+        }
+
+        .form-button__signin {
+            min-height: 35px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .form-link__register {
+            font-size: 14px;
         }
     }
 }

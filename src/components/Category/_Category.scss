@@ -1,8 +1,8 @@
 @import './../../base';
 
 .category {
-    margin-top: 80px;
-
+    margin-bottom: 80px;
+    
     .category-headline {
         display: flex;
         align-items: center;
@@ -43,6 +43,24 @@
     }
 }
 
+
+@media screen and (max-width: 768px) {
+    .category {
+        .category-headline {
+            
+            &__title {
+                font-size: 28px;
+                line-height: 36px;
+            }
+
+            &__allgoods {
+                font-size: 16px;
+                line-height: 19px;
+            }
+        }
+    }
+}
+
 @media screen and (max-width: 650px) {
     .category {
         .category-headline {
@@ -54,10 +72,12 @@
 @media screen and (max-width: 450px) {
     .category {
         .category-headline {
+            flex-wrap: wrap;
+            align-items: center;
             margin-bottom: 20px;
 
             &__allgoods {
-                bottom: 5px;
+                bottom: 0;
                 top: auto;
             }
         }
@@ -71,7 +91,6 @@
 @media screen and (max-width: 320px) {
     .category {
         .category-headline {
-
             &__title {
                 font-size: 24px;
                 line-height: 31px;

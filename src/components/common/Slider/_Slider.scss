@@ -2,7 +2,7 @@
 
 .demo-carousel {
     width:calc( 100% - 310px);
-    margin: 0 auto;
+    margin: 0 auto 80px;
 }
 .slider-image {
     height: 525px;
@@ -28,7 +28,7 @@
 @media screen and (max-width: 1000px) {
     .demo-carousel {
         width: 90%;
-        margin: 0 auto;
+        margin: 0 auto 80px;
         max-height: 450px;
         height: auto;
     }
@@ -43,6 +43,7 @@
     .demo-carousel {
         width: 100%;
         height: auto;
+        margin-bottom: 55px;
 
         .carousel-root {
             
