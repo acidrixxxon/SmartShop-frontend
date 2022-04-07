@@ -1,0 +1,46 @@
+@import './../../../base';
+
+
+.page-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+
+    &__link {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        margin-right: 10px;
+        transition: .1s all linear;
+
+        &:hover {
+            color: $text-color-gray;
+        }
+
+        .page-links__arrow {
+            margin-left: 10px;
+            height: 12px;
+            width: 12px;
+        }
+
+        &.item-link {
+            color: $text-color-gray;
+            font-size: 16px;
+        }
+    }
+}
+
+
+@media screen and (max-width: 450px) {
+    .page-links {
+        &__link {
+            font-size: 13px;
+
+            &.item-link  {
+                font-size: 13px;
+            }
+        }
+    }
+    
+}

@@ -19,6 +19,7 @@
                 display: flex;
                 align-items: center;
                 padding: 0 20px;
+                transition: .2s all linear;
 
                 .navigation__item--icon {
                     margin-right: 10px;
@@ -30,6 +31,10 @@
                 }
 
                 &.active {
+                    background-color: #243C53;
+                }
+
+                &:hover {
                     background-color: #243C53;
                 }
 

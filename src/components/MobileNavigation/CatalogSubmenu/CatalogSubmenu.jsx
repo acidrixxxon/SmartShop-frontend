@@ -14,7 +14,7 @@ import Electricbike from './../../../assets/icons/Electricbike'
 const CatalogSubmenu = ({ isOpen,closeCatalog }) => {
 
   return (
-    <div className={isOpen ? 'catalogSubmenu-overlay active' :'catalogSubmenu-overlay'}>
+    <div className={isOpen ? 'catalogSubmenu-overlay active' :'catalogSubmenu-overlay'} onClick={closeCatalog}>
         <div className="catalogSubmenu-content" onClick={(e) => e.stopPropagation()}>
             <div className="catalogSubmenu-head">
                 <h4 className="catalogSubmenu-head__title">Каталог</h4>
