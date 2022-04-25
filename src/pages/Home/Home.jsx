@@ -5,8 +5,16 @@ import Container from '../../components/common/Container/Container'
 import News from '../../components/common/News/News'
 import Slider from '../../components/common/Slider/Slider'
 import './_Home.scss'
+import { useDispatch } from 'react-redux'
+import { getProducts } from './../../redux/productSlice/productActions.js'
 
 const Home = () => {
+  const dispatch = useDispatch()
+
+  React.useEffect(() => {
+    dispatch(getProducts())
+  },[dispatch])
+
   return (
     <div id="home">
         <Container>

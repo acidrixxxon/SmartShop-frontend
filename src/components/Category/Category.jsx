@@ -2,8 +2,13 @@ import React from 'react'
 import CategoryItem from './CategoryItem/CategoryItem'
 import './_Category.scss'
 import { BiRightArrowAlt } from 'react-icons/bi'
+import { useSelector } from 'react-redux'
 
 const Category = ({ name}) => {
+
+  const { product: { HomeLoader,HomeProducts }} = useSelector(state => state)
+
+  if (HomeProducts?.length === 0 ) return null
   return (
     <div className='category'>
         <div className="category-headline">
@@ -15,7 +20,7 @@ const Category = ({ name}) => {
         </div>
         
         <ul className="category-list">
-            {[...new Array(4)].map((item,index) => <CategoryItem key={index} />)}
+            {HomeProducts?.slice(0,4).map((item) => <CategoryItem key={item.id} item={item} />)}
         </ul>
     </div>
   )

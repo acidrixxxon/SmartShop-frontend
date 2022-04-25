@@ -1,0 +1,136 @@
+@import './../../../../base';
+
+.obtMethod {
+    margin-top: 40px;
+    padding: 20px;
+    border: 1px solid #C8CACB;
+    border-radius: 8px;
+
+    .obtMethod-type {
+        padding-bottom: 30px;
+        border-bottom: 1px solid #C8CACB;
+        margin-bottom: 30px;
+
+        &__variant {
+            padding: 15px 20px;
+            min-width: 210px;
+            background-color: transparent;
+            text-align: left;
+            border-radius: 5px;
+            margin-right: 30px;
+            border: 1px solid #EAEAF0;
+            cursor: pointer;
+            color: $text-color-gray;
+
+            &.active {
+                border: 2px solid #4878A6;
+                color: #4878A6;
+            }
+
+            input {
+                margin-right: 10px;
+            }
+        }
+    }
+
+    .obtMethod-details {
+        .row {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .obtMethod-field {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            cursor: pointer;
+
+            .obtMethod-field__label {
+                margin-bottom: 10px;
+            }
+
+            .obtMethod-field__selected {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .obtMethod-field__input {
+                border: 1px solid #EAEAF0;
+                border-radius: 5px;
+                padding: 0 20px;
+                height: 45px;
+            }
+
+            &.city {
+                margin-right: 20px;
+                position: relative;
+
+                .obtMethod-field__selected {
+                    padding: 0 20px;
+                    height: 45px;
+                    border: 1px solid #EAEAF0;
+                    border-radius: 5px;
+                    display: flex;
+                    align-items: center;
+                }
+                
+                .obtMethod-field__list {
+                   position: absolute;
+                   top: 90px;
+                   z-index: 1;
+                   background-color: #fff;
+                   width: 100%;
+                   border: 1px solid #EAEAF0;
+                   border-radius: 5px;
+
+                   .obtMethod-field__list-item {
+                       padding: 10px 20px;
+                       cursor: pointer;
+                   }
+                }
+            }
+
+            &.comments {
+                width: 100%;
+            }
+        }
+    }
+
+    .obtMethod-shops {
+
+        .obtMethod-shopsItem {
+            display: flex;
+            margin-bottom: 20px;
+            cursor: pointer;
+
+            input {
+                margin-right: 10px;
+            }
+
+            .obtMethod-shopsItem__details {
+                display: flex;
+                flex-direction: column;
+
+                .obtMethod-shopsItem__address {
+                    font-size: 18px;
+                }
+
+                .obtMethod-shopsItem__shedule {
+                    color: $text-color-gray;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}
+
+.obtMethod-notActive {
+    margin-top: 40px;
+    padding: 20px;
+    border: 1px solid #C8CACB;
+    border-radius: 8px;
+    
+    .obtMethod-title {
+        color: $text-color-gray;
+    }
+}

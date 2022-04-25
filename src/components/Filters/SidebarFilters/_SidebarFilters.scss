@@ -1,0 +1,22 @@
+
+
+.sidebarFilters {
+    min-width: 310px;
+    margin-right: 20px;
+}
+
+
+
+
+@media screen and (max-width: 900px) {
+    .sidebarFilters {
+        min-width: 250px;
+        margin-right: 20px;
+    }
+}
+
+@media screen and (max-width: 790px) {
+    .sidebarFilters {
+        display: none;
+    }
+}

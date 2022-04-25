@@ -104,7 +104,7 @@
                     display: flex;
                     align-items: center;
                 .product-tabs__reviews-list {
-                    max-width: 640px;
+                    width: 640px;
 
                     .product-tabs__reviews-item {
                         background-color: $lightBlue-color;
@@ -174,6 +174,25 @@
     }
 }
 
+@media screen and (max-width: 1000px) {
+    .product-data {
+        .product-tabs__content {
+            .product-tabs__reviews {
+                .product-tabs__row {
+                    .product-tabs__reviews-list {
+                        width: 500px;
+                    }
+
+                    .product-tabs__add-review {
+                        .product-tabs__add--btn {
+                            min-width: 210px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 @media screen and (max-width: 768px) {
     .product-data {
@@ -200,6 +219,24 @@
                                 }
                             }
                         }
+                    }
+                }
+            }
+
+            .product-tabs__reviews {
+                .product-tabs__row {
+                    flex-direction: column;
+
+                    .product-tabs__reviews-list {
+                        max-width: inherit;
+                        width: 100%;
+                        margin-bottom: 20px;
+                        order: 2;
+                    }
+
+                    .product-tabs__add-review {
+                        order: 1;
+                        margin-bottom: 30px;
                     }
                 }
             }
@@ -237,6 +274,16 @@
                     line-height: 26px;
                 }
             }
+
+            .product-tabs__reviews {
+                .product-tabs__row {
+                    .product-tabs__reviews-list {
+                        .product-tabs__reviews-item {
+                            padding: 15px;
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -265,6 +312,28 @@
             }
 
             .product-tabs__characteristics {
+                .product-tabs__content {
+                    .product-tabs__list {
+                        .product-tabs__list__item {
+                            padding: 10px 0;
+                        }
+                    }
+                }
+            }
+
+            .product-tabs__reviews {
+                .product-tabs__row {
+                    .product-tabs__reviews-list {
+                        .product-tabs__reviews-item {
+                            .product-tabs__reviews-item__author {
+                                margin-bottom: 10px;
+                                .left {
+                                    flex-direction: column;
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }

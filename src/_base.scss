@@ -22,6 +22,10 @@ input {
     border: none;
 }
 
+a {
+    text-decoration: none;
+}
+
 li {
     list-style: none;
 }
@@ -36,6 +40,13 @@ li {
 .form-error {
     font-size: 13px;
     color: red;
+}
+
+.page__title {
+    font-size: 36px;
+    line-height: 48px;
+    font-weight: 700;
+    margin-bottom: 50px;
 }
 
 

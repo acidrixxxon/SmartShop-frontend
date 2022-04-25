@@ -1,0 +1,32 @@
+@import './../../../_base.scss';
+
+.activeFilters {
+
+    &-list {
+        display: flex;
+        flex-wrap: wrap;
+        
+        .activeFilters-item {
+            background-color: $lightBlue-color; 
+            padding: 4px 10px;
+            border-radius: 102px;
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+
+            &__text {
+                margin-right: 5px;
+                font-size: 12px;
+            }
+
+            &__removeIcon {
+                cursor: pointer;
+
+                svg {
+                    height: 13px;
+                    width: 13px;
+                }
+            }
+        }
+    }
+}

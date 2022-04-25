@@ -6,23 +6,33 @@ import Comments from './../../../assets/icons/Comments'
 import LikeIcon from '../../../assets/icons/LikeIcon'
 import CompareIcon from '../../../assets/icons/CompareIcon'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
+import { BsCartCheck } from 'react-icons/bs'
+import { Link } from 'react-router-dom'
+import { addItemToCard,removeFromCart } from '../../../redux/cartSlice/cartActions'
+import { useDispatch,useSelector } from 'react-redux'
 
-const CategoryItem = () => {
+const CategoryItem = ({ item }) => {
+  const dispatch = useDispatch()
+  const { cart: { items }} = useSelector(state => state)
+
   return (
     <li className='category-item'>
+      <div className="">
       <div className="category-item__image">
-        <span className="category-item__label label-new">
+        { item.new && (<span className="category-item__label label-new">
           Новинка
-        </span>
-        <span className="category-item__label label-hit">
+        </span>)}
+        { item.hitOfSales && (<span className={item.new ? 'category-item__label label-hit' : 'category-item__label label-hit position-first'}>
           Хит продаж
-        </span>
-        <img className='category-item__image--img' src={itemimg} alt="itemimage" />
+        </span>)}
+        <Link to={`/product/${item._id}`} className='category-item__link'>
+          <img className='category-item__image--img' src={item.img[0]} alt="itemimage" />
+        </Link>
       </div>
 
-      <span className="category-item__itemCategory">Сигвеи</span>
+      <Link to={`/category/${item.category._id}`} className="category-item__itemCategory">{item.category.name}</Link>
 
-      <h4 className="category-item__title">Гироскутер Smart BalanceГироскутер Smart BalanceГироскутер Smart Balance</h4>
+      <Link to={`/product/${item._id}`} className="category-item__title">Гироскутер Smart BalanceГироскутер Smart BalanceГироскутер Smart Balance</Link>
 
       <div className="category-item__row">
         <span className="category-item__rating">
@@ -31,22 +41,30 @@ const CategoryItem = () => {
 
         <span className="category-item__comments">
           <Comments className='category-item__comments--icon'/>
-          <span className='category-item__comments--count'>(17)</span>
+          <span className='category-item__comments--count'>({item.comments.length})</span>
         </span>
       </div>
+      </div>
 
+      <div className="">
       <div className="category-item__price">
         <div className="category-item__priceContainer">
-          <span className="category-item__price__discountPrice">5400 ₽</span>
-          <span className="category-item__price__oldPrice">4990 ₽</span>
-          <span className="category-item__price__discount">
-            <span>20%</span>
-            <span>— 1 000 ₽</span>
-          </span>
+          {item.discount !== 0 ? (
+            <>
+              <span className="category-item__price__discountPrice">{item.price} ₴</span>
+                <span className="category-item__price__oldPrice">{Math.ceil((item.price - ((item.price / 100) * item.discount)))} ₴</span>
+                <span className="category-item__price__discount">
+                  <span>{item.discount} %</span>
+                  <span>— {Math.ceil((item.price / 100) * item.discount)} ₴</span>
+              </span>
+            </>
+          ) : (
+            <span className="category-item__price__oldPrice">{item.price} ₴</span>
+          )}
         </div>
 
         <ul className="category-item__buttonsList">
-          <li className="category-item__buttonsList--btn btn-wish">
+          <li className="category-item__buttonsList--btn btn-wish added">
             <LikeIcon liked={false} />
           </li>
           <li className="category-item__buttonsList--btn btn-wish">
@@ -55,12 +73,19 @@ const CategoryItem = () => {
         </ul>
       </div>
 
-        <button className='category-item__buyButton'>
-          Добавить в корзину
-          <AiOutlineShoppingCart />
-        </button>
-    </li>
-  )
+        { items.find(itm => itm._id === item._id) === undefined ? 
+          <button className='category-item__buyButton' onClick={() => dispatch(addItemToCard(item))}>
+            Добавить в корзину
+            <AiOutlineShoppingCart />
+          </button>: (
+          <button className='category-item__buyButton added--toCart' onClick={() => dispatch(removeFromCart(item.id))}>
+            В корзине
+            <BsCartCheck />
+          </button>
+        )}
+      </div>
+
+    </li>)
 }
 
 export default CategoryItem

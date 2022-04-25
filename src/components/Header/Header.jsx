@@ -6,13 +6,16 @@ import Logotype from '../common/Logotype/Logotype'
 import WishList from '../common/WishList/WishList'
 import Search from '../Search/Search'
 import './_Header.scss'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
     <div id="header">
         <Container>
             <div className="header__logotype">
-                <Logotype />
+                <Link className="header__link" to="/">
+                  <Logotype />
+                </Link>
             </div>
 
             <div className="header__buttons">

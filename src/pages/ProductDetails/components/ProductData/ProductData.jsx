@@ -2,6 +2,7 @@ import React from 'react'
 import './_ProductData.scss'
 import { AiOutlineStar } from 'react-icons/ai'
 import useravatar from './../../../../assets/avatar.png'
+import { useSelector } from 'react-redux'
 
 const ProductData = () => {
     const [ tab,setTab ] = React.useState('description')
@@ -26,6 +27,7 @@ const ProductData = () => {
         value: '-'
     }]
 
+    const { product: { ProductDetails }} = useSelector(state => state)
     return (
         <div className='product-data'>
             <div className="product-tabs">
@@ -39,7 +41,7 @@ const ProductData = () => {
                     </li>
 
                     <li className={tab === 'reviews' ? "product-tabs__item active" : 'product-tabs__item'} onClick={() => setTab('reviews')}>
-                        Отзывы (5)
+                        Отзывы ({ProductDetails.comments.length})
                     </li>
                 </ul>
             </div>
@@ -48,16 +50,11 @@ const ProductData = () => {
                 {tab === 'description' && (
                     <div className="product-tabs__description">
                         <h4 className="product-tabs__title">
-                            Описание гироскутера Smart Balance Well 6.5
+                            Описание {ProductDetails.title}
                         </h4>
 
                         <p className="product-tabs__text">
-                            Вопрос безопасности всегда стоит очень остро, в этом году производители решили его следующим образом — снабдили модель качественной задней и передней подсветкой, поэтому пользователь может не переживать о том, что его будет незаметно на дороге в тёмное время суток.
-                            На руле имеется яркий качественный дисплей, где отображается вся актуальная и необходимая информация — скорость, пробег и др. Кроме того, на руле имеется кнопка включения и выключения подсветки, звуковой сигнал и кнопка настроек. Таким образом, все необходимое для управления самокатом находится у пользователя под рукой.
-                            Для комфорта прогулок электросамокат снабжён передним и задним амортизаторами. Вы можете перемещаться не только по ровному городскому асфальту, но и по неровностям, которые не затруднят ваше перемещение.
-                            Складной механизм и небольшой вес (11 кг) делают модель эргономичной. В сложенном виде самокат занимает совсем мало места — его легко перевозить как в багажнике машины, так и в общественном транспорте. При складывании самокат фиксируется с помощью крючка к заднему крылу. А для того, чтобы разложить его, необходимо, нажав на заднее крыло, приподнять руль. Характерный щелчок говорит о том, что самокат разложен полностью и готов к эксплуатации.
-                            Стоит отметить, что электросамокат очень быстро стартует — вам не надо отталкиваться или разгоняться. Выдерживает до 120 кг, в процессе изготовления использовались только качественные материалы.
-                            Быстрый, лёгкий, компактный — прекрасный выбор для ценителей удобства!
+                            {ProductDetails.description}
                         </p>
                     </div>
                 )}
@@ -65,13 +62,13 @@ const ProductData = () => {
                 {tab === 'characteristics' && (
                     <div className='product-tabs__characteristics'>
                          <h4 className="product-tabs__title">
-                            Характеристики гироскутера Smart Balance Well 6.5
+                            Характеристики {ProductDetails.title}
                         </h4>
 
                         <div className="product-tabs__content">
-                            {data.length > 0 ? (
+                            {ProductDetails.characteristics.length > 0 ? (
                                 <ul className="product-tabs__list">
-                                    {data.map(item => {
+                                    {ProductDetails.characteristics.map(item => {
                                         return (
                                             <li className='product-tabs__list__item'>
                                                 <div className='row row-title'>{item.title}</div>
@@ -88,34 +85,40 @@ const ProductData = () => {
                 {tab === 'reviews' && (
                     <div className='product-tabs__reviews'>
                         <h4 className="product-tabs__title">
-                            Отзывы на гироскутера Smart Balance Well 6.5
+                            Отзывы на {ProductDetails.title}
                         </h4>
 
                         <div className="product-tabs__row">
-                            <ul className="product-tabs__reviews-list">
-                                <li className="product-tabs__reviews-item">
-                                    <div className="product-tabs__reviews-item__author">
-                                        <div className="left">
-                                            <img src={useravatar} alt="useravatar" />
-                                            <span>
-                                                Александр
-                                            </span>
-                                        </div>
-                                        <div className="right">
-                                            <span className="rating">
-                                                 {[...new Array(5)].map((item,index) => <AiOutlineStar key={index} />)}
-                                            </span>
-                                            <span className="date">
-                                                07 июня 2021
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <div className="product-tabs__reviews-item__review">
-                                        Катаюсь каждый день после работы, заряд держит отлично!
-                                    </div>
-                                </li>
-                            </ul>
+                            {ProductDetails.comments.length > 0 ? (
+                                <ul className="product-tabs__reviews-list">
+                                    {ProductDetails.comments.map(item => {
+                                        return (
+                                            <li className="product-tabs__reviews-item">
+                                                <div className="product-tabs__reviews-item__author">
+                                                    <div className="left">
+                                                        <img src={useravatar} alt="useravatar" />
+                                                        <span>
+                                                            {item.author}
+                                                        </span>
+                                                    </div>
+                                                    <div className="right">
+                                                        <span className="rating">
+                                                            {[...new Array(5)].map((item,index) => <AiOutlineStar key={index} />)}
+                                                        </span>
+                                                        <span className="date">
+                                                            07 июня 2021
+                                                        </span>
+                                                    </div>
+                                                </div>
+    
+                                                <div className="product-tabs__reviews-item__review">
+                                                    {item.text}
+                                                </div>
+                                            </li>
+                                        )}
+                                    )}
+                                </ul>) :
+                                (<p>Пока никто не оставил отзыв. Будь-те первыми</p>)}
 
                             <div className='product-tabs__add-review'>
                                 <button className='product-tabs__add--btn'>Добавить отзыв</button>

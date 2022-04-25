@@ -1,0 +1,49 @@
+
+
+
+.desktopSorting {
+    position: relative;
+
+    .desktopSorting-button {
+        padding: 13px 20px;
+        border: 1px solid #EAEAF0;
+        border-radius: 4px;
+        background-color: transparent;
+        cursor: pointer;
+        transition: .1s all linear;
+        min-width: 220px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &__title {
+            font-size: 14px;
+            line-height: 20px;
+            font-family: 'Exo 2';
+            font-weight: 500;
+        }
+
+        &:hover {
+            background-color: #EDF2F6;
+        }
+    }
+
+    .desktopSorting-list {
+        position: absolute;
+        z-index: 99999;
+        background-color: #fff;
+        left: 0;
+        right: 0;
+
+        &__item {
+            transition: .1s all linear;
+            padding: 13px 20px;
+            width: 100%;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #EDF2F6;
+            }
+        }
+    }
+}

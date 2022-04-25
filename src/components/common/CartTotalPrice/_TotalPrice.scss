@@ -1,0 +1,64 @@
+@import './../../../base';
+
+.cart__totalPrice {
+    padding: 20px;
+    min-width: 420px;
+    background-color: $lightBlue-color;
+    border-radius: 8px;
+    margin-left: 30px;
+
+    &-title {
+        font-size: 22px;
+        line-height: 26px;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    &__row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+
+        .row__left {
+            color: $text-color-gray;
+        }
+
+        &.totals {
+            padding-top: 30px;
+            border-top: 1px solid #C8CACB;
+
+            .row__left {
+                color: $text-color-main;
+                font-size: 24px;
+            }
+
+            .row__right {
+                font-size: 28px;
+                font-weight: 700;
+            }
+        }
+    }
+
+    .cart__submit {
+        width: 100%;
+        cursor: pointer;
+        padding: 15px 0;
+        background-color: $text-color-gray;
+        border-radius: 4px;
+        color: #fff;
+        transition: .2s all ease-in-out;
+
+        &:hover {
+            background-color: #5b646b;
+        }
+
+        &.btn--disabled {
+            cursor: default;
+
+            &:hover {
+                background-color: $text-color-gray;
+            }
+        }
+    }
+}

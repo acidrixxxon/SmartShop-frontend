@@ -4,34 +4,45 @@ import PageLinks from '../../components/common/PageLinks/PageLinks'
 import './_ProductDetails.scss'
 import img from './../../assets/img.png'
 import { Carousel } from 'react-responsive-carousel'
-import { AiOutlineStar,AiOutlineHeart,AiFillHeart } from 'react-icons/ai'
+import { AiOutlineStar,AiOutlineHeart,AiFillHeart,AiOutlineShoppingCart } from 'react-icons/ai'
 import { MdOutlineDeliveryDining } from 'react-icons/md'
+import { BsCartCheck } from 'react-icons/bs'
 import { ImStatsBars } from 'react-icons/im'
 import Comments from './../../assets/icons/Comments'
 import ProductData from './components/ProductData/ProductData'
 import Category from './../../components/Category/Category'
+import { useDispatch, useSelector } from 'react-redux'
+import { getProductById } from '../../redux/productSlice/productActions'
+import { useParams } from 'react-router-dom'
+import { addItemToCard, removeFromCart } from '../../redux/cartSlice/cartActions'
 
 const ProductDetails = () => {
-    const addedToCart = false
+    const { id } = useParams()
     const added = false
 
+    const { product: { ProductDetails,ProductDetailsLoader },cart } = useSelector(state => state)
+    const dispatch = useDispatch()
+
+    React.useEffect(() => {
+        dispatch(getProductById(id))
+    },[dispatch])
+
+    if (ProductDetailsLoader === true) return <span>Loading...</span>
     return (
         <div id="productDetails-wrapper">
             <Container>
-                <PageLinks category='Сигвеи' itemname='Гироскутер Smart Balance Well 6.5 Хип-Хоп (АКВАЗАЩИТА)' />
+                <PageLinks category={ProductDetails.category.name} itemname={ProductDetails.title} />
 
                 <div className='product'>
                     <div className="product-gallery">
                         <Carousel dynamicHeight={true}>
-                            <img src={img} alt="productimage" className='product-gallery__img'/>
-                            <img src={img} alt="productimage" className='product-gallery__img'/>
-                            <img src={img} alt="productimage" className='product-gallery__img'/>
+                            {ProductDetails.img.map(item => (<img src={item} alt="productimage" key={item} className='product-gallery__img'/>))}
                         </Carousel>
                     </div>
 
                     <div className="product-content">
                         <h4 className="product__title">
-                            Гироскутер Smart Balance Well 6.5 Хип-Хоп (АКВАЗАЩИТА)
+                             {ProductDetails.title}
                         </h4>
 
                         <div className="product-additional">
@@ -43,7 +54,7 @@ const ProductDetails = () => {
 
                                     <span className="product__comments">
                                         <Comments className='product__comments--icon' />
-                                        <span className="product__comments--count">(15)</span>
+                                        <span className="product__comments--count">({ProductDetails.comments.length})</span>
                                     </span>
                                 </div>
 
@@ -59,27 +70,33 @@ const ProductDetails = () => {
 
                             <div className="product-row row-2">
                                 <div className="product__price">
-                                    <span className="product__price__sale">
-                                        <span className="product__price__sale--oldPrice">
-                                            5 400 ₽
+                                    {ProductDetails.discount !== 0 ? ( 
+                                        <span className="product__price__sale">
+                                            <span className="product__price__sale--oldPrice">
+                                                {ProductDetails.price} ₴
+                                            </span>
+                                            <span className="product__price__sale--discount">
+                                                <span>20%</span><span>— 1 000 ₴</span>
+                                            </span>
+                                            <span className="product__price__newPrice">
+                                                {Math.ceil((ProductDetails.price - ((ProductDetails.price / 100) * ProductDetails.discount)))} ₴
+                                            </span>
+                                        </span>) : (
+                                        <span className='product__price__newPrice'>
+                                            {ProductDetails.price} ₴
                                         </span>
-                                        <span className="product__price__sale--discount">
-                                            <span>20%</span><span>— 1 000 ₽</span>
-                                        </span>
-                                    </span>
-
-                                    <span className="product__price__newPrice">
-                                        13 990 ₽
-                                    </span>
+                                        )}
                                 </div>
 
-                                {addedToCart ? (
-                                <button className="product__buttons--btn btn--addedToCart">
-                                    Уже в корзине
-                                </button>) : 
-                                (<button className="product__buttons--btn btn--addToCart">
-                                    В корзину
-                                </button>)}
+                                {cart.items.find(item => item.id === ProductDetails.id) === undefined ?
+                                    (<button className="product__buttons--btn btn--addToCart" onClick={() => dispatch(addItemToCard(ProductDetails))}>
+                                        В корзину
+                                        <AiOutlineShoppingCart />
+                                    </button>) : 
+                                    (<button className="product__buttons--btn btn--addedToCart" onClick={() => dispatch(removeFromCart(id))}>
+                                        Уже в корзине
+                                        <BsCartCheck />
+                                    </button>)}
                             </div>
                         </div>
 

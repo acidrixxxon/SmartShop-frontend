@@ -11,6 +11,7 @@ import Smarttoys from '../../../assets/icons/Smarttoys'
 import Smartwatch from '../../../assets/icons/Smartwatch'
 import Electriccar from '../../../assets/icons/Electriccar'
 import Electricbike from '../../../assets/icons/Electricbike'
+import { Link } from 'react-router-dom'
 
 
 const Navigation = () => {
@@ -99,9 +100,11 @@ const Navigation = () => {
                             </li>
                         </ul>
                     </li>
-                    <li className="navigation__item">
-                        Акции
-                    </li>
+                        <li className="navigation__item">
+                            <Link to='/catalog' className='navigation__link'>
+                                Все товары
+                            </Link>
+                        </li>
                     <li className="navigation__item">
                         О компании
                     </li>

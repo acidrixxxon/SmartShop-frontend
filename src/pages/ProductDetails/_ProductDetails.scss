@@ -153,6 +153,16 @@
                                 cursor: pointer;
                                 background-color: transparent;
                                 transition: .2s all linear;
+                                margin-left: 30px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+
+                                svg {
+                                    margin-left: 10px;
+                                    height: 18px;
+                                    width: 18px;
+                                }
 
                                 &.btn--addToCart {
                                     &:hover {
@@ -260,6 +270,7 @@
                             &.row-2 {
                                 .product__buttons--btn {
                                     min-width: 225px;
+                                    margin-left: 0;
                                 }
                             }
                         }
