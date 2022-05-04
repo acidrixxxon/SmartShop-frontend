@@ -1,0 +1,63 @@
+
+
+.payment {
+    margin-top: 40px;
+    padding: 20px;
+
+    border: 1px solid #C8CACB;
+    border-radius: 8px;
+
+    .payment__title {
+
+        &.not-active {
+            color: #838688;
+            margin-bottom: 0;
+        }
+    }
+
+    .payment__select {
+        max-width: 350px;
+        
+        position: relative;
+
+        .payment__button {
+            cursor: pointer;
+            
+            padding: 0 20px;
+            height: 45px;
+            width: 100%;
+
+            border: 1px solid #EAEAF0;
+            border-radius: 5px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .payment__dropdown {
+             background-color: #fff;
+
+            border: 1px solid #EAEAF0;
+            border-radius: 5px;
+
+            position: absolute; 
+            z-index: 999;
+            top: 60px;
+
+            width: 100%;
+
+            .payment__dropdown-item {
+                padding: 10px 20px;
+                
+                cursor: pointer;
+            }
+        }
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

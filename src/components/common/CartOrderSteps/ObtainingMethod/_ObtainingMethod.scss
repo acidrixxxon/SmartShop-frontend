@@ -122,6 +122,38 @@
             }
         }
     }
+
+    .obtMethod-method {
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 20px;
+        display: block;
+    }
+ 
+    .row {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+
+        .obtMethod-details {
+
+            .obtMethod-shopDetails {
+                display: flex;
+                flex-direction: column;
+
+                .obtMethod-shopDetails__address {
+                    font-size: 18px;
+                    margin-bottom: 5px;
+                }
+
+                .obtMethod-shopDetails__shedule {
+                    color: $text-color-gray;
+                    font-size: 14px;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
 }
 
 .obtMethod-notActive {
@@ -132,5 +164,6 @@
     
     .obtMethod-title {
         color: $text-color-gray;
+        margin-bottom: 0;
     }
 }

@@ -2,6 +2,8 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { goToNextStep } from '../../../../redux/cartSlice/cartActions'
 import { cartActiveStep } from '../../../../utils/constants'
+import ChangeBtn from '../../Buttons/ChangeBtn/ChangeBtn'
+import NextStepBtn from '../../Buttons/NextStepBtn/NextStepBtn'
 import OrderItem from './OrderItem/OrderItem'
 import './_OrderItems.scss'
 
@@ -23,7 +25,7 @@ const OrderItems = () => {
                         </ul>
                     </div>
 
-                    <button className='cart__nextStepButton' onClick={() => dispatch(goToNextStep(cartActiveStep.OBTAINING_METHOD))}>Далее</button>
+                    <NextStepBtn onClick={() => dispatch(goToNextStep(cartActiveStep.OBTAINING_METHOD))} />
                 </>
                 :
                 <div className='cart__orderItems'>
@@ -40,7 +42,7 @@ const OrderItems = () => {
                             })}
                         </ul>
 
-                        <button className='cart__changeOrder-btn' onClick={() => dispatch(goToNextStep(cartActiveStep.ORDER_ITEMS))}>Изменить</button>
+                        <ChangeBtn onClick={() => dispatch(goToNextStep(cartActiveStep.ORDER_ITEMS))} />
                     </div>
                 </div>
             }

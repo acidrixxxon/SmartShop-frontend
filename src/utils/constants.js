@@ -11,7 +11,10 @@ export const obtainingMethods = {
     DELIVERY: 'DELIVERY'
 }
 
+
 export const cartActiveStep = {
     ORDER_ITEMS: 'ORDER_ITEMS',
-    OBTAINING_METHOD: 'OBTAINING_METHOD'
+    OBTAINING_METHOD: 'OBTAINING_METHOD',
+    PAYMENT_VARIANT: 'PAYMENT_VARIANT',
+    CLIENT_INFO: 'CLIENT_INFO'
 }
