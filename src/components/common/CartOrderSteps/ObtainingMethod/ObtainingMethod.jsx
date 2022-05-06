@@ -3,7 +3,7 @@ import { cartActiveStep, obtainingMethods } from '../../../../utils/constants'
 import './_ObtainingMethod.scss'
 import { IoMdArrowDropdown } from 'react-icons/io'
 import { useDispatch, useSelector } from 'react-redux'
-import { goToNextStep } from '../../../../redux/cartSlice/cartActions'
+import { goToNextStep, setObtainingData } from '../../../../redux/cartSlice/cartActions'
 import NextStepBtn from './../../../../components/common/Buttons/NextStepBtn/NextStepBtn'
 import ChangeBtn from './../../../../components/common/Buttons/ChangeBtn/ChangeBtn'
 import { shops } from '../../../../utils/data'
@@ -26,6 +26,17 @@ const ObtainingMethod = () => {
     const nextStepHandler = () => {
         setFinished(true)
         dispatch(goToNextStep(cartActiveStep.PAYMENT_VARIANT))
+        if ( method === obtainingMethods.DELIVERY) {
+            dispatch(setObtainingData({
+                ...deliveryInfo,
+                type: 'delivery'
+            }))
+        } else {
+            dispatch(setObtainingData({
+                ...shops[shop],
+                type: 'pickup'
+            }))
+        }
     }
 
     const changeHandler = () => {
@@ -102,29 +113,21 @@ const ObtainingMethod = () => {
 
                     { method === obtainingMethods.PICKUP &&
                         <ul className="obtMethod-shops">
-                            <li className="obtMethod-shopsItem">
-                                <input type="radio" checked/>
-                                <div className="obtMethod-shopsItem__details">
-                                    <span className="obtMethod-shopsItem__address">
-                                        г. Киев, ул. Соломенская, 7а
-                                    </span>
-                                    <span className="obtMethod-shopsItem__shedule">
-                                        ПН-ВС 09:00 — 22:00
-                                    </span>
-                                </div>
-                            </li>
-
-                            <li className="obtMethod-shopsItem">
-                                <input type="radio" />
-                                <div className="obtMethod-shopsItem__details">
-                                    <span className="obtMethod-shopsItem__address">
-                                        г. Днепр, проспект Науки, 50
-                                    </span>
-                                    <span className="obtMethod-shopsItem__shedule">
-                                        ПН-ВС 09:00 — 22:00
-                                    </span>
-                                </div>
-                            </li>
+                            {shops.map(item => {
+                                return (
+                                    <li className="obtMethod-shopsItem"> 
+                                        <input type="radio" checked={shop === item.id} onClick={() => setShop(item.id)} />
+                                        <div className="obtMethod-shopsItem__details">
+                                            <span className="obtMethod-shopsItem__address">
+                                                {item.address}
+                                            </span>
+                                            <span className="obtMethod-shopsItem__shedule">
+                                                {item.time}
+                                            </span>
+                                        </div>
+                                    </li>
+                                )
+                            })}
                         </ul>
                     }
                     </div> 

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { cartActiveStep } from './../../../../utils/constants'
 import NextStepBtn from './../../Buttons/NextStepBtn/NextStepBtn'
 import ChangeBtn from './../../Buttons/ChangeBtn/ChangeBtn'
-import { goToNextStep } from '../../../../redux/cartSlice/cartActions'
+import { goToNextStep, setPaymentMethod } from '../../../../redux/cartSlice/cartActions'
 
 
 const PaymentMethod = () => {
@@ -25,7 +25,8 @@ const PaymentMethod = () => {
 
   const nextStepHandler = () => {
     setFinished(true)
-    dispatch(goToNextStep(paymentVariants.CLIENT_INFO))
+    dispatch(goToNextStep(cartActiveStep.CLIENT_INFO))
+    dispatch(setPaymentMethod(method))
   }
 
   const changeHandler = () => {
@@ -34,7 +35,7 @@ const PaymentMethod = () => {
 }
   return (
     <>
-      <div className='payment'>
+      <div className='payment step-container'>
         {activeStep === cartActiveStep.PAYMENT_VARIANT ? 
           <>
             <h4 className="payment__title step-title">Способ оплаты</h4>
@@ -59,7 +60,7 @@ const PaymentMethod = () => {
           }
         {finished && (
           <>
-            <h4 className="payment__title step-title">Способ оплаты </h4>
+            <h4 className="payment__title step-title">Способ оплаты</h4>
             <div className="row">
               <span className="payment__variant">
                 {method.title}

@@ -17,7 +17,7 @@ const OrderItems = () => {
         <>
             {activeStep === cartActiveStep.ORDER_ITEMS ? 
                 <>
-                    <div className='cart__orderItems'>
+                    <div className='cart__orderItems step-container'>
                         <h4 className='cart__orderItems-title step-title'>Ваш заказ</h4>
 
                         <ul className="cart__orderItems-list">
@@ -28,7 +28,7 @@ const OrderItems = () => {
                     <NextStepBtn onClick={() => dispatch(goToNextStep(cartActiveStep.OBTAINING_METHOD))} />
                 </>
                 :
-                <div className='cart__orderItems'>
+                <div className='cart__orderItems step-container'>
                     <h4 className='cart__orderItems-title step-title'>Ваш заказ</h4>
 
                     <div className="cart__orderItems-row">

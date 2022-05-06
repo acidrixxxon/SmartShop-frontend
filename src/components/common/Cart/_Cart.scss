@@ -53,4 +53,9 @@
 .step-title {
     margin-bottom: 20px;
     font-size: 20px;
+
+    &.not-active {
+        color: $text-color-gray;
+        margin-bottom: 0;
+    }
 }

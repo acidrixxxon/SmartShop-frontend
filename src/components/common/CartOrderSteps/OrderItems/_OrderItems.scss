@@ -1,10 +1,7 @@
 @import './../../../../base';
 
 .cart__orderItems {
-    padding: 20px;
-    border: 1px solid #C8CACB;
-    border-radius: 8px;
-    
+    margin-top: 0 !important;
 
     &-row {
         display: flex;

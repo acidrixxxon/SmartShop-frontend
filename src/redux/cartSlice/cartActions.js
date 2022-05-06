@@ -1,4 +1,4 @@
-import { pushToCart,deleteFromCart,plusQty, minusQty, nextStep } from "./cartSlice"
+import { pushToCart,deleteFromCart,plusQty, minusQty, nextStep, setObtaining, setPayment, setClient } from "./cartSlice"
 
 
 
@@ -20,4 +20,16 @@ export const minQty = (id) => async (dispatch) => {
 
 export const goToNextStep = (step) => async (dispatch) => {
     dispatch(nextStep(step))
+}
+
+export const setObtainingData = (data) => async (dispatch) => {
+    dispatch(setObtaining(data))
+}
+
+export const setPaymentMethod = (data) => async (dispatch) => {
+    dispatch(setPayment(data))
+}
+
+export const setClientData = (data) => async (dispatch) => {
+    dispatch(setClient(data))
 }

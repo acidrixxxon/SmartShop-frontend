@@ -6,7 +6,8 @@ const initialState = {
     items: [],
     itemsCount: 0,
     totalPrice: 0,
-    activeStep: cartActiveStep.ORDER_ITEMS
+    activeStep: cartActiveStep.ORDER_ITEMS,
+    data: {}
 }
 
 
@@ -27,7 +28,7 @@ const cartSlice = createSlice({
             }
         },
         deleteFromCart(state,action) {
-            const item = state.items.find(item => item._id == action.payload)
+            const item = state.items.find(item => item._id === action.payload)
             state.items = state.items.filter(item => item._id !== action.payload)
             if (state.itemsCount > 0) {
                 state.itemsCount -=1
@@ -40,7 +41,7 @@ const cartSlice = createSlice({
         },
         plusQty(state,action) {
             const index = state.items.map(item => item._id).indexOf(action.payload)
-            const item  = state.items.find( item => item._id == action.payload)
+            const item  = state.items.find( item => item._id === action.payload)
             item.qty += 1
             state.items[index] = item
             state.itemsCount += 1
@@ -52,7 +53,7 @@ const cartSlice = createSlice({
         },
         minusQty(state,action) {
             const index = state.items.map(item => item._id).indexOf(action.payload)
-            const item  = state.items.find( item => item._id == action.payload)
+            const item  = state.items.find( item => item._id === action.payload)
             if (item.qty > 1) {
                 item.qty -= 1
                 state.items[index] = item
@@ -68,6 +69,15 @@ const cartSlice = createSlice({
         },
         nextStep(state,action) {
             state.activeStep = action.payload
+        },
+        setObtaining(state,action) {
+            state.data.obtaining = action.payload
+        },
+        setPayment(state,action) {
+            state.data.payment = action.payload
+        },
+        setClient(state,action) {
+            state.data.client = action.payload
         }
     }
 })
@@ -75,4 +85,4 @@ const cartSlice = createSlice({
 
 
 export default cartSlice.reducer
-export const { pushToCart,deleteFromCart,plusQty,minusQty,nextStep } = cartSlice.actions
+export const { pushToCart,deleteFromCart,plusQty,minusQty,nextStep,setObtaining,setPayment,setClient } = cartSlice.actions

@@ -1,4 +1,5 @@
 import React from 'react'
+import ClientInfo from './ClientInfo/ClientInfo'
 import ObtainingMethod from './ObtainingMethod/ObtainingMethod'
 import OrderItems from './OrderItems/OrderItems'
 import PaymentMethod from './PaymentMethod/PaymentMethod'
@@ -12,6 +13,7 @@ const OrderSteps = () => {
             <OrderItems />
             <ObtainingMethod />
             <PaymentMethod />
+            <ClientInfo />
         </div>
     )
 }
