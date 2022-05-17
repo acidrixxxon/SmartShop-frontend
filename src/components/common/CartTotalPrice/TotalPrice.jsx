@@ -1,9 +1,20 @@
 import React from 'react'
 import './_TotalPrice.scss'
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import useFinishedCart from '../../../utils/FinishedCartHook'
+import { toast } from 'react-toastify'
+import { openAuthModal } from './../../../redux/viewSlice/viewActions'
+import { API_URL} from './../../../utils/settings'
+import axios from 'axios'
+import { finishOrder } from '../../../redux/cartSlice/cartSlice'
 
 const TotalPrice = () => {
-  const { cart: { items,itemsCount }} = useSelector(state => state)
+  const [ disabled ] = useFinishedCart()
+  
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const { cart: { items,itemsCount,data },user: { user,accessToken } } = useSelector(state => state)
 
   const totalPrice = items.map(item => {
     if (item.discount > 0) {
@@ -22,7 +33,29 @@ const TotalPrice = () => {
   }).reduce((prev,next) => prev + next,0)
 
 
+  const createOrderHandler = async () => {
+    
+    if (!user || !accessToken) {
+      dispatch(openAuthModal())
+      return toast.error('Авторизируйтесь!')
+    }
 
+    const totalOrder = {
+      items,
+      itemsCount,
+      totalPrice,
+      obtaining: data.obtaining,
+      payment: data.payment,
+      client: data.client
+    }
+
+    const res = await axios.post(`${API_URL}/order/create`,totalOrder)
+
+    if (res.status === 200 && res.data.success === true) {
+      navigate(`/order/${res.data.order._id}`)
+      dispatch(finishOrder())
+    }
+  }
 
   return (
     <>
@@ -58,7 +91,7 @@ const TotalPrice = () => {
           </span>
         </div>
 
-        <button className="cart__submit">
+        <button className={disabled ? "cart__submit btn--disabled" : "cart__submit"} disabled={disabled} onClick={createOrderHandler}>
           Оформить заказ
         </button>
       </div>

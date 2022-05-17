@@ -4,32 +4,32 @@ import { useDispatch, useSelector } from 'react-redux'
 import { cartActiveStep } from '../../../../utils/constants'
 import NextStepBtn from '../../Buttons/NextStepBtn/NextStepBtn'
 import ChangeBtn from '../../Buttons/ChangeBtn/ChangeBtn'
-import { goToNextStep } from '../../../../redux/cartSlice/cartActions'
+import { clearActiveSteps, goToNextStep,setClientData } from '../../../../redux/cartSlice/cartActions.js'
 
 const ClientInfo = () => {
+    const { cart: { activeStep },user: { user } } = useSelector(state => state)
+    const dispatch = useDispatch()
+
     const [ finished,setFinished ] = React.useState(false)
-    const [ clientData,setClientData ] = React.useState({
+    const [ clientData,setClient ] = React.useState({
         firstName: '',
         secondName: '',
-        phone: '',
-        email: '',
+        phone: user.phone || '',
+        email: user.email || '',
         notcallback: false
     })
 
-    const dispatch = useDispatch()
-    const { cart: { activeStep }} = useSelector(state => state)
-
     const fieldsHandler = (e) => {
-        setClientData(state => ({
+        setClient(state => ({
             ...state,
             [e.target.name]: e.target.value
         }))
     }
 
     const nextStepHandler = () => {
-        setFinished(true)
-        dispatch(goToNextStep())
         dispatch(setClientData(clientData))
+        setFinished(true)
+        dispatch(clearActiveSteps())
     }
 
     const changeHandler = () => {
@@ -39,7 +39,7 @@ const ClientInfo = () => {
     return (
         <>
             <div className='clientInfo step-container'>
-                { activeStep === cartActiveStep.CLIENT_INFO ? (
+                { activeStep === cartActiveStep.CLIENT_INFO && !finished ? (
                     <>
                             <h4 className="clientInfo__title step-title">Получатель</h4>
 

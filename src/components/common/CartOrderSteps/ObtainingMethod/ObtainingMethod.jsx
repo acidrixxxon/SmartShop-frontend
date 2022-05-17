@@ -7,6 +7,7 @@ import { goToNextStep, setObtainingData } from '../../../../redux/cartSlice/cart
 import NextStepBtn from './../../../../components/common/Buttons/NextStepBtn/NextStepBtn'
 import ChangeBtn from './../../../../components/common/Buttons/ChangeBtn/ChangeBtn'
 import { shops } from '../../../../utils/data'
+import { toast } from 'react-toastify'
 
 const ObtainingMethod = () => {
     const [ method,setMethod ] = React.useState(obtainingMethods.DELIVERY)
@@ -24,6 +25,10 @@ const ObtainingMethod = () => {
     const dispatch = useDispatch()
 
     const nextStepHandler = () => {
+        if (method === obtainingMethods.DELIVERY && deliveryInfo.address === '') {
+            return toast.error('Вы не указали адрес')
+        } 
+
         setFinished(true)
         dispatch(goToNextStep(cartActiveStep.PAYMENT_VARIANT))
         if ( method === obtainingMethods.DELIVERY) {

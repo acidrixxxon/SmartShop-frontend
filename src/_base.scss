@@ -16,6 +16,9 @@ $text-color-gray: #838688;
 $darkBlue-color: #2A5275;
 $blue-color: #4878A6;
 $lightBlue-color: #EDF2F6;
+$red-color:#F15152;
+
+$main-border: 1px solid #EAEAF0;
 
 input {
     outline: none;
@@ -37,6 +40,12 @@ li {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+.Toastify {
+    .Toastify__toast-container--top-right {
+        z-index: 99999999;
+    }   
 }
 
 .form-error {

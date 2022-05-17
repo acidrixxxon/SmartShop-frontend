@@ -19,17 +19,23 @@ const userSlice = createSlice({
             state.loading = true
         },
         loginUser__success(state,action) {
-            state.user = action.payload
+            state.user = action.payload.user
+            state.accessToken = action.payload.access_token
             state.loading = false
         },
         loginUser__error(state,action) {
             state.error = action.payload
             state.loading = false
+        },
+        user__logout(state) {
+            state.error = null
+            state.user = {}
+            state.accessToken = null
         }
     }
 })
 
 
 
-export const { loginUser__error, loginUser__request, loginUser__success } = userSlice.actions
+export const { loginUser__error, loginUser__request, loginUser__success, user__logout } = userSlice.actions
 export default userSlice.reducer

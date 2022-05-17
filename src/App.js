@@ -9,6 +9,9 @@ import './_base.scss';
 import CatalogPage from './pages/Catalog/CatalogPage';
 import CategoryPage from './pages/CategoryPage/CategoryPage';
 import CartPage from './pages/Cart/CartPage';
+import OrderPage from './pages/OrderPage/OrderPage';
+import CabinetPage from './pages/Cabinet/CabinetPage';
+import PrivatRoute from './components/common/PrivatRoute/PrivatRoute';
 
 function App() {
   return (
@@ -23,6 +26,8 @@ function App() {
         <Route path="/catalog" element={<CatalogPage />} exact />
         <Route path="/category/:id" element={<CategoryPage />} /> exact />
         <Route path="/cart" element={<CartPage />} exact />
+        <Route path="/order/:id" element={<OrderPage />} exact />
+        <Route path="/cabinet" element={<CabinetPage />} />
       </Routes>
     </div>
   );

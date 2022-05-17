@@ -1,0 +1,31 @@
+@import './../../../../_base.scss';
+
+
+.cabinet-menu {
+    min-width: 305px;
+    margin-right: 100px;
+
+    .cabinet-menu__list {
+        border: $main-border;
+        border-radius: 8px;
+
+        .cabinet-menu__item {
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: all .2s linear;
+
+            &.active {
+                background-color: $lightBlue-color;
+            }
+
+            &:hover {
+                background-color: $lightBlue-color;
+            }
+
+            &:last-child {
+                color: $red-color;
+                border-top: $main-border;
+            }
+        }
+    }
+}

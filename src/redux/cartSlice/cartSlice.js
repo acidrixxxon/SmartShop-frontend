@@ -78,6 +78,16 @@ const cartSlice = createSlice({
         },
         setClient(state,action) {
             state.data.client = action.payload
+        },
+        clearSteps(state,action) {
+            state.activeStep = null;
+        },
+        finishOrder(state,action) {
+            state.activeStep = null
+            state.items = []
+            state.itemsCount = 0
+            state.totalPrice = 0
+            state.data = {}
         }
     }
 })
@@ -85,4 +95,4 @@ const cartSlice = createSlice({
 
 
 export default cartSlice.reducer
-export const { pushToCart,deleteFromCart,plusQty,minusQty,nextStep,setObtaining,setPayment,setClient } = cartSlice.actions
+export const { pushToCart,deleteFromCart,plusQty,minusQty,nextStep,setObtaining,setPayment,setClient,clearSteps,finishOrder } = cartSlice.actions

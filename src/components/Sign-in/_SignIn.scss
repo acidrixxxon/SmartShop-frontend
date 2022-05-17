@@ -42,6 +42,12 @@
         padding: 15px 20px;
         cursor: pointer;
 
+        .userProfile-item__link {
+            color: $text-color-gray;
+            width: 100%;
+            display: block;
+        }
+
         &:hover {
             background-color: $lightBlue-color;
         }

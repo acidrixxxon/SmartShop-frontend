@@ -31,7 +31,7 @@ const RegisterForm = ({ toLogin }) => {
 
 
         <label className='form-field__label' htmlFor='phone'>
-            Эл. почта
+            Моб. телефон
         </label>
         <input 
             type="text" 

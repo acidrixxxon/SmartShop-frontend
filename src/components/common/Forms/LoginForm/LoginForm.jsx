@@ -3,11 +3,15 @@ import './_LoginForm.scss'
 import { AiOutlineLock,AiOutlineEyeInvisible,AiOutlineEye } from 'react-icons/ai'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import { useDispatch } from 'react-redux'
+import { login } from './../../../../redux/userSlice/userActions'
 
 const LoginForm = ({ toRegister }) => {
     const [ showPassword,setShowPassword ] = React.useState(false)
 
     const toggleShowPassword = () => setShowPassword(!showPassword)
+
+    const dispatch = useDispatch()
 
     const formik = useFormik({
         initialValues: {
@@ -16,10 +20,10 @@ const LoginForm = ({ toRegister }) => {
         },
         validationSchema: Yup.object({
             email: Yup.string().email('Не корректный email').required('Введите email'),
-            password: Yup.string().min(8,'Пароль должен быть больше 8 символов').required('Введите пароль')
+            password: Yup.string().min(2,'Пароль должен быть больше 2 символов').required('Введите пароль')
         }),
         onSubmit: (values) => {
-            console.log(values)
+            dispatch(login(values))
         }
     })
 

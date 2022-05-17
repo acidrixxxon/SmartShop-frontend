@@ -28,6 +28,11 @@
         line-height: 20px;
         width: 280px;
         @extend %partial-text;
+
+
+        @media screen and (max-width: 1100px) {
+            width: auto;
+        }
     }
 
     &__qty {
